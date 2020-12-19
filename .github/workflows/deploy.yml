@@ -23,6 +23,8 @@ jobs:
       - name: Get branch name
         shell: bash
         run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g' | sed 's/\./_/g')"
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true 
       # Устанавливаем зависимости для сборки
       - name: Install Dependencies
         run: npm i
